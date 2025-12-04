@@ -6,18 +6,20 @@
 
 Este projeto implementa um pipeline completo de detecção, rastreamento e reconhecimento de placas de veículos em vídeos. O sistema utiliza **YOLOv11** para detecção de objetos, o algoritmo **SORT** para rastreamento (tracking), **EasyOCR** para leitura de caracteres e diversas técnicas de **Processamento Digital de Imagens** para pré-processamento.
 
+![Imagem projeto](documentacao/capa.jpg)
+
 ## 📋 Sobre o Projeto
 
-O objetivo deste trabalho é demonstrar a aplicação prática de visão computacional e processamento de imagens para monitoramento de tráfego. O sistema é capaz de detectar veículos, manter o rastreamento de IDs únicos, localizar a placa, aplicar filtros de melhoria de imagem e realizar a leitura dos caracteres com correção heurística[cite: 5, 6].
+O objetivo deste trabalho é demonstrar a aplicação prática de visão computacional e processamento de imagens para monitoramento de tráfego. O sistema é capaz de detectar veículos, manter o rastreamento de IDs únicos, localizar a placa, aplicar filtros de melhoria de imagem e realizar a leitura dos caracteres com correção heurística.
 
 ### Pipeline de Processamento
 O fluxo de dados segue as seguintes etapas:
 1.  **Detecção Veicular:** O modelo YOLOv11 identifica veículos (carros, motos, caminhões, ônibus) no frame.
 2.  **Rastreamento (Tracking):** O algoritmo SORT atribui e mantém um ID único para cada veículo ao longo do tempo.
 3.  **Detecção de Placa:** Uma segunda rede YOLO, treinada especificamente, recorta a região da placa.
-4.  **Pré-processamento (PID):** Aplicação de filtros (Upscaling, Bilateral, Sharpening, Otsu) para preparar a imagem para o OCR[cite: 7].
-5.  **OCR e Heurística:** Leitura via EasyOCR e correção de caracteres baseada em regras de posição (ex: corrigir 'O' para '0' em posições numéricas)[cite: 4, 6].
-6.  **Interpolação:** Suavização dos dados para preencher lacunas em frames onde a detecção falhou momentaneamente[cite: 9].
+4.  **Pré-processamento (PID):** Aplicação de filtros (Upscaling, Bilateral, Sharpening, Otsu) para preparar a imagem para o OCR.
+5.  **OCR e Heurística:** Leitura via EasyOCR e correção de caracteres baseada em regras de posição (ex: corrigir 'O' para '0' em posições numéricas).
+6.  **Interpolação:** Suavização dos dados para preencher lacunas em frames onde a detecção falhou momentaneamente.
 
 ---
 
@@ -121,7 +123,7 @@ Conforme exigido na disciplina, aplicamos diversas técnicas para garantir a pre
 
 O modelo de detecção de placas foi treinado utilizando o **YOLOv11 Nano** via Google Colab, aproveitando a aceleração de GPU (Tesla T4).
 
-* **Notebook de Treino:** Disponível em [`notebooks/training_colab.ipynb`](notebooks/training_colab.ipynb).
+* **Notebook de Treino:** Disponível em [`models/train/main.ipynb`](models/train/main.ipynb).
 * **Dataset:** *License Plate Recognition v4* (Augmented 3x).
 * **Configurações:**
     * Épocas: 20
