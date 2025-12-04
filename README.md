@@ -43,7 +43,7 @@ Siga os passos abaixo para rodar o projeto localmente.
 ### 1. Clonar o Repositório
 
 ```bash
-git clone [https://github.com/NathanMarques2001/plate-detection.git](https://github.com/NathanMarques2001/plate-detection.git)
+git clone https://github.com/NathanMarques2001/plate-detection.git
 cd plate-detection
 ```
 
